@@ -1,0 +1,70 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <ctime>
+#include <unistd.h>
+using namespace std;
+
+
+class Automat{
+    
+           int inhalt =10,geld=0, preis=50;
+
+    
+    
+   public: void einwerfen(int);
+           int preisHolen();
+           bool knopfDrehen();
+    
+};
+    
+void Automat::einwerfen(int betrag){
+    geld+=betrag;
+    if(!(geld>=preis)){
+        cout<<"Bitte passenden Betrag("<<preis<<" Cent) einwerfen. Kein Rückgeld!\n\n";
+        sleep(1.5);
+        }
+}
+int Automat::preisHolen(void){
+    
+    return preis;
+}
+
+bool Automat::knopfDrehen(void){
+    inhalt--;
+    geld=0;
+    
+    return true;
+}
+
+
+int main()
+{ 
+    int einwurf=0;
+    int temp=0;
+    Automat a1;
+    
+    while(1){
+    system("clear");
+    cout<<"Bitte werfen Sie den Betrag von "<<a1.preisHolen()<< " Cent ein. Kein Rückgeld!\t\tBereits eingeworfen: "<<einwurf<<"\n";
+    cin>>temp;
+    einwurf+=temp;
+    a1.einwerfen(einwurf);
+    if(!(einwurf>=a1.preisHolen())) continue;
+    if(a1.knopfDrehen()){
+        einwurf=0;
+        cout<<"Warenausgabe...\n\n";
+        sleep(2);
+    }
+    
+    }
+    
+
+    return 0;
+}

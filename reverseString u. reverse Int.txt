@@ -1,0 +1,80 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+void rev(void);
+void revInt(void);
+
+typedef struct person{
+    string name,vorname;
+    int kennummer;
+    void rev(){
+        for(int i=0;i<name.size();i++)
+        cout<<name[name.size()-1-i];
+         cout<<"\n";
+        for(int i=0;i<vorname.size();i++)
+        cout<<vorname[vorname.size()-1-i];
+        cout<<"\n";
+    }
+    void revInt(){
+        int zahlen[12];
+        int revZahl=0,i;
+        int maxPot=1;
+    
+        for(i=0; kennummer;maxPot*=10,kennummer/=10,i++){
+            zahlen[i]=kennummer%10;
+                        }
+            maxPot/=10;
+        for(i=0;maxPot>=1;maxPot/=10,i++)
+            revZahl+= zahlen[i]*maxPot; 
+            cout<<revZahl;
+            }            
+    
+}PERSON;
+
+
+
+int main()
+{ PERSON a;
+    int x;
+    cout<<"Name? ";
+    cin>>a.name;
+    cout<<"\nVorname? ";
+    cin>>a.vorname;
+    cout<<"\nKennnummer(max. 12-stellig:";
+    cin>>a.kennummer;
+    a.rev();
+    a.revInt();
+    //x=revInt(a.kennummer);
+    //cout<<x<<endl;
+    return 0;
+}
+
+
+/*int revInt(int zahl){
+        int zahlen[12];
+        int revZahl=0,i;
+        int maxPot=1;
+    
+        for(i=0; zahl;maxPot*=10,i++){
+            zahlen[i]=zahl%10;
+            zahl/=10;
+            
+            }
+            maxPot/=10;
+        for(i=0;maxPot>=1;maxPot/=10,i++)
+            revZahl+= zahlen[i]*maxPot; 
+            return revZahl;
+            }*/
+            
+            
+
+
+

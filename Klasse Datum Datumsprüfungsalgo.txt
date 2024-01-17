@@ -1,0 +1,122 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+bool schaltjahr(int );
+
+class DATUM{
+private:
+    int tag,monat,jahr;
+    
+    bool korrektesDatum(int tag,int monat,int jahr){
+        
+            if(!(monat%2) && monat<=6){
+                if(schaltjahr(jahr) && (tag<=28))
+                    return true;
+                    }else if(tag<=30 && monat!=2) return true;
+            
+            if(monat==7){
+                if(tag<=31) return true;
+            }
+                    
+            else if(monat%2 && monat<=12 ){
+                    if(tag<=31) return true;
+                    else if(monat<=12){
+                        if(tag<=30) return true;
+                    }
+                }
+                    
+            return false;
+    }
+    
+    
+public: 
+    void setzeDatum(int,int,int);
+    void heute();
+    void show();
+    DATUM &operator++();
+    DATUM operator++(int);
+};
+
+
+    DATUM& DATUM::operator++(){
+        if(monat<=6 && (!(monat%2) || monat%2) ){
+            if(tag==30 || tag==31){
+                monat++,
+                tag=1;
+                return *this;
+                }
+        }
+        
+        tag++;
+        return *this;
+    }
+    
+    DATUM DATUM::operator++(int){
+       if(monat<=6 && (!(monat%2) || monat%2) ){
+            if(tag==30 || tag==31){
+                monat++,
+                tag=1;
+                return *this;
+                }
+        }
+       
+        ++tag;
+        return *this;
+    }
+
+
+
+void DATUM::setzeDatum(int stag, int smonat, int sjahr){
+    tag=stag;
+    monat=smonat;
+    jahr=sjahr;
+    
+    
+}
+
+void DATUM::heute(){
+    time_t now= time(0);
+    
+    
+    tm* heute = localtime(&now);
+    
+    
+    cout<<"Heute ist der "<<heute->tm_mday<<"/"<<heute->tm_mon<<"/"<<(heute->tm_year)+1900<<"\n"; 
+}
+
+void DATUM::show(){
+    if(korrektesDatum(tag,monat,jahr)) 
+        cout<<"gesetztes Datum= "<<tag<<"/"<<monat<<"/"<<jahr<<"\n";
+      else if(!korrektesDatum(tag,monat,jahr))  cout<<"ungültiges Datum\n";
+    
+}
+
+bool schaltjahr(int jahr){
+    if((!(jahr%4) && jahr%100) || (jahr%400)) return true;
+    return false;
+}
+
+int main()
+{ 
+    DATUM d1;
+    d1.setzeDatum(27,2,2013);
+    d1.show();
+    ++d1;
+    d1.show();
+    d1++;
+    d1.show();
+    ++d1;
+    d1.show();
+    d1.heute();
+    d1.show();
+    d1.heute();
+    
+    return 0;
+}

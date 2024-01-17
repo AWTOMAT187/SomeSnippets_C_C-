@@ -1,0 +1,72 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+class TIER{
+    string name, fellfarbe, laut;
+    int krallenlaenge, anzahlBeine; 
+    
+    public:   
+        virtual void getDATA(void){
+            
+            cout<<"NAME:\t\t\t"<<name<<endl;
+            cout<<"FELLFARBE:\t\t"<<fellfarbe<<endl;
+            cout<<"TIERLAUT:\t\t"<<laut<<endl;
+            cout<<"KRALLENLAENGE:\t\t"<<krallenlaenge<<endl;
+            cout<<"ANZAHL der BEINE:\t"<<anzahlBeine<<"\n"<<endl;
+        }
+        
+        virtual void setDATA(string sname, string sfellfarbe, string slaut,
+                            int skrallenlaenge, int sanzahlBeine){
+            
+            name=sname; 
+            fellfarbe=sfellfarbe; 
+            laut=slaut;
+            krallenlaenge=skrallenlaenge; 
+            anzahlBeine=sanzahlBeine;
+            
+        }
+
+};
+
+class HUND: virtual public TIER{};
+
+class KATZE: virtual public TIER{};
+
+class VOGEL:  virtual public TIER{};
+
+class PAPIERVOGEL: virtual public TIER{
+    PAPIERVOGEL(string sname, string sfellfarbe, string slaut,
+                            int skrallenlaenge, int sanzahlBeine){sname=name,sfellfarbe=fellfarbe,slaut=laut,
+                            skrallenlaenge=krallenlaenge,sanzahlBeine=anzahlBeine;}
+    PAPIERVOGEL():name(string("")),fellfarbe(string("")),krallenlaenge((int(0)),anzahlBeine((int(0)){};
+};
+
+
+int main()
+{
+    HUND wauwau;
+    KATZE kadse;
+    VOGEL uhu;
+    PAPIERVOGEL();
+    
+    wauwau.setDATA("bello","gruen","wuff",5,4);
+    kadse.setDATA("tiger","grau","miau",7,4);
+    uhu.setDATA("hodhod","schwarz","huhu",10,2);
+    
+    wauwau.getDATA();
+    kadse.getDATA();
+    uhu.getDATA();
+    
+    cout<<"Hello World";
+
+    return 0;
+}

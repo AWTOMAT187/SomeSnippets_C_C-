@@ -1,0 +1,103 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+int ggT(int a,int b);
+using namespace std;
+
+
+class Bruch{
+    private: 
+        int zaehler;
+        int nenner;
+        
+    public:
+        void set_bruch(int z=0, int n=1){
+            zaehler=z;
+            nenner=n;
+        }
+        int get_nenner () const{
+            return nenner;
+        }
+        
+        int get_zaehler () const{
+            return zaehler;
+        }
+    
+        Bruch &operator*(const Bruch);
+        Bruch &operator+(const Bruch);
+        Bruch &operator-(const Bruch);
+        Bruch &operator/(const Bruch);
+        void const show();
+    
+};
+
+Bruch &Bruch::operator*(const Bruch faktor){
+    zaehler*= faktor.get_zaehler();
+    nenner*= faktor.get_nenner();
+    zaehler/=ggT(get_zaehler(),get_nenner());
+    nenner /=ggT(get_zaehler(),get_nenner());
+    return *this;
+}
+
+Bruch &Bruch::operator+(const Bruch faktor){
+    zaehler+= faktor.get_zaehler();
+    nenner+= faktor.get_nenner();
+    zaehler/=ggT(get_zaehler(),get_nenner());
+    nenner /=ggT(get_zaehler(),get_nenner());
+    return *this;
+}
+
+Bruch &Bruch::operator-(const Bruch faktor){
+    zaehler-= faktor.get_zaehler();
+    nenner-= faktor.get_nenner();
+    zaehler/=ggT(get_zaehler(),get_nenner());
+    nenner /=ggT(get_zaehler(),get_nenner());
+    return *this;
+}
+
+Bruch &Bruch::operator/(const Bruch faktor){
+    zaehler/= faktor.get_zaehler();
+    nenner /= faktor.get_nenner();
+    zaehler/=ggT(get_zaehler(),get_nenner());
+    nenner /=ggT(get_zaehler(),get_nenner());
+    return *this;
+}
+void const Bruch::show(){
+    
+    cout<< zaehler<<"/"<<nenner<<endl;
+    
+}
+
+int ggT(int a, int b){
+    int temp,h;
+    if(a<b){
+        temp=a;
+        a=b;
+        b=temp;
+            }
+    do{
+    h=a%b;
+    a=b;
+    b=h;
+    } while(b);
+    return a;
+}
+
+int main()
+{ 
+    Bruch a1,a2,a3;
+
+    a1.set_bruch(5,10);
+    a2.set_bruch(125,345);
+    
+    a3=a1*a2;    
+    a3.show();
+
+    return 0;
+}

@@ -1,0 +1,136 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <math.h>
+#define PI 3.14
+
+using namespace std;
+
+class RECHTECK;
+class KREIS;
+class QUADER;
+
+class RECHTECK{
+    
+  private: double a,b;
+  public: void setzeSeitenlaenge(double ax, double bx);
+    double Seitenlaengea();
+    double Seitenlaengeb();
+    double flaeche();
+    double umfang();
+    void toString();
+    RECHTECK(int aa, int bb){a=aa,b=bb;}
+    RECHTECK():a(double(1)),b(double(1)){};
+    
+};
+
+void RECHTECK::setzeSeitenlaenge(double ax, double bx){
+      a=ax;
+      b=bx;
+          }  
+          
+double RECHTECK::flaeche(){
+                return a*b;
+    }
+            
+double RECHTECK::umfang(){
+                return (a+b)*2;
+    }
+            
+void RECHTECK::toString(){
+                cout<<"\nRechteckSeitenlänge: a= "<<Seitenlaengea()<<" b= "<<Seitenlaengeb()<<endl;
+                cout<<"RechteckFläche= "<<flaeche()<<endl;
+                cout<<"RechteckUmfang= "<<umfang()<<endl;
+    }
+            
+
+double RECHTECK::Seitenlaengea(){
+        return a;
+    }
+
+double RECHTECK::Seitenlaengeb(){
+        return b;
+    }
+
+class KREIS{
+    private: double radius; 
+    public: void setzeradius(double r){
+                radius =r;
+            }
+            
+            double Radius(){
+                return radius;
+            }
+            
+            double flaeche(){
+                return PI*radius*radius;
+            }
+            
+            double umfang(){
+                return 2*PI*radius;
+            }
+            
+            void toString(){
+                cout<<"\nKreisradius= "<<Radius()<<endl;
+                cout<<"KreisFläche= "<<flaeche()<<endl;
+                cout<<"KreisUmfang= "<<umfang()<<endl;
+            }
+    KREIS(double r){radius=r;}         
+    KREIS():radius(double(1)){};    
+};
+
+class QUADER{
+    private: double a,b,c;
+    public: void setzeSeitenlaenge(double ax,double bx, double cx){
+                        a=ax;
+                        b=bx;
+                        c=cx;
+                }
+    
+            void Seitenlaenge(){
+                cout<<"a= "<<a<<" b= "<<b<<" c= "<<c;
+            }
+            
+            double mantelFlaeche(){
+                return a*b*2+a*c*2+b*c*2;
+                            }
+            
+            double umfangx(){
+                return (a+c)*2;
+            }
+            
+            double umfangy(){
+                return (b+c)*2;
+            }
+            
+            void toString(){
+                cout<<"\nQuaderSeitenlängen: a= "<<this->a<<" b= "<<this->b<<" c= "<<this->c<<endl;
+                cout<<"QuaderFläche= "<<mantelFlaeche()<<endl;
+                cout<<"QuaderUmfangXachse= "<<umfangx()<<endl;
+                cout<<"QuaderUmfangYachse= "<<umfangy()<<endl;
+            }
+    QUADER(double aa, double bb, double cc){a=aa,b=bb,c=cc;}        
+    QUADER():a(double(1)),b(double(1)),c(double(1)){};
+};
+
+
+int main()
+{ RECHTECK a(2,4);
+  KREIS b(4);
+  QUADER c(3,1,5);
+   
+   
+   
+   
+    a.toString();
+    b.toString();
+    c.toString();
+    
+    return 0;
+}
